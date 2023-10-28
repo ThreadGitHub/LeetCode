@@ -6,6 +6,7 @@ import org.junit.jupiter.params.provider.CsvSource;
 import org.leetcode.utils.ArrayConver;
 
 import java.util.Arrays;
+import java.util.PriorityQueue;
 
 /**
  * 2558. 从数量最多的堆取走礼物
@@ -20,13 +21,18 @@ import java.util.Arrays;
  * @date 2023/10/28 15:11
  */
 public class No_2558_PickGifts {
+    /**
+     * 暴力循环解法
+     * @param gifts
+     * @param k
+     */
     @ParameterizedTest
     @CsvSource({
             "'[25,64,9,4,100]', 4",
             "'[1,1,1,1]', 4",
             "'[54,6,34,66,63,52,39,62,46,75,28,65,18,37,18,13,33,69,19,40,13,10,43,61,72]', 7"
     })
-    public void pickGifts(@ConvertWith(ArrayConver.class) int[] gifts, int k) {
+    public void pickGifts_A(@ConvertWith(ArrayConver.class) int[] gifts, int k) {
         for (int i = 0; i < k; i++) {
             int max = gifts[0];
             int index = 0;
@@ -43,6 +49,37 @@ public class No_2558_PickGifts {
         System.out.println(Arrays.toString(gifts));
 
         long result = Arrays.stream(gifts).asLongStream().sum();
+        System.out.println(result);
+    }
+
+    /**
+     * 官方 最大堆解法
+     * @param gifts
+     * @param k
+     */
+    @ParameterizedTest
+    @CsvSource({
+            "'[25,64,9,4,100]', 4",
+            "'[1,1,1,1]', 4",
+            "'[54,6,34,66,63,52,39,62,46,75,28,65,18,37,18,13,33,69,19,40,13,10,43,61,72]', 7"
+    })
+    public void pickGifts_B(@ConvertWith(ArrayConver.class) int[] gifts, int k) {
+        PriorityQueue<Integer> priorityQueue = new PriorityQueue<>((a, b) -> b - a);
+        // 存入堆中
+        for (int gift : gifts) {
+            priorityQueue.offer(gift);
+        }
+        // 取数计算平方根
+        while (k > 0) {
+            int sqrt = (int)Math.sqrt(priorityQueue.poll());
+            priorityQueue.offer(sqrt);
+            k--;
+        }
+        // 求和
+        int result = 0;
+        while (!priorityQueue.isEmpty()) {
+            result += priorityQueue.poll();
+        }
         System.out.println(result);
     }
 }
