@@ -2,6 +2,7 @@ package org.leetcode.utils;
 
 import org.junit.jupiter.params.converter.ArgumentConversionException;
 import org.junit.jupiter.params.converter.SimpleArgumentConverter;
+import org.junit.platform.commons.util.StringUtils;
 
 import java.util.Arrays;
 
@@ -15,8 +16,12 @@ public class ArrayConver extends SimpleArgumentConverter {
     protected Object convert(Object source, Class<?> targetType) throws ArgumentConversionException {
         if (source instanceof String) {
             // 分割为数组
-            String[] array = source.toString().replace("[", "")
-                    .replace("]", "").split(",");
+            String str = source.toString().replace("[", "")
+                    .replace("]", "");
+            String[] array = new String[0];
+            if (StringUtils.isNotBlank(str)) {
+                array = str.split(",");
+            }
             // 如果是int数组
             if (int[].class.isAssignableFrom(targetType)) {
                 return Arrays.stream(array).mapToInt(Integer::parseInt).toArray();
