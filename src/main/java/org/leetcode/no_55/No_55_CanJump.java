@@ -17,6 +17,15 @@ import org.leetcode.utils.ArrayConver;
  * @date 2023/10/30 14:18
  */
 public class No_55_CanJump {
+    /**
+     * 我的解法就做两件事：
+     *
+     * 判断当前元素能不能跳到终点
+     * 判断元素值是不是0 并且 判断前面的元素能不能跳过0元素位置：
+     *      能：继续循环
+     *      不能：直接GG跳不到终点的
+     * @param nums
+     */
     @ParameterizedTest
     @CsvSource({
             "'[2,3,1,1,4]'",
