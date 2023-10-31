@@ -76,6 +76,8 @@ public class No_45_Jump {
         for (int i = 0; i < nums.length-1; i++) {
             // 计算当前位置最大能跳到的位置
             maxPosition = Math.max(maxPosition, i+nums[i]);
+
+            // 到达了当前每一跳的终点
             if (i == end) {
                 end = maxPosition;
                 jumpStep++;
