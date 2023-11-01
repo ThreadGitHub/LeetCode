@@ -12,29 +12,6 @@ import java.util.stream.Stream;
  * @date 2023/11/1 23:40
  */
 public class No_206_ReverseList {
-    static class ListNode {
-        int val;
-        ListNode next;
-        ListNode() {}
-        ListNode(int val) { this.val = val; }
-        ListNode(int val, ListNode next) { this.val = val; this.next = next; }
-
-        @Override
-        public String toString() {
-            return "ListNode{" +
-                    "val=" + val +
-                    ", next=" + next +
-                    '}';
-        }
-    }
-
-    static Stream<Arguments> arguments() {
-        // 链表 1,2,3,4,5
-        ListNode head = new ListNode(1, new ListNode(2,
-                new ListNode(3, new ListNode(4, new ListNode(5)))));
-        return Stream.of(Arguments.of(head));
-    }
-
     @ParameterizedTest
     @MethodSource("arguments")
     public void reverseList_A(ListNode listNode) {
@@ -75,4 +52,26 @@ public class No_206_ReverseList {
         System.out.println(prev);
     }
 
+    static class ListNode {
+        int val;
+        ListNode next;
+        ListNode() {}
+        ListNode(int val) { this.val = val; }
+        ListNode(int val, ListNode next) { this.val = val; this.next = next; }
+
+        @Override
+        public String toString() {
+            return "ListNode{" +
+                    "val=" + val +
+                    ", next=" + next +
+                    '}';
+        }
+    }
+
+    static Stream<Arguments> arguments() {
+        // 链表 1,2,3,4,5
+        ListNode head = new ListNode(1, new ListNode(2,
+                new ListNode(3, new ListNode(4, new ListNode(5)))));
+        return Stream.of(Arguments.of(head));
+    }
 }
