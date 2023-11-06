@@ -15,6 +15,7 @@ public class ArrayConver extends SimpleArgumentConverter {
     @Override
     protected Object convert(Object source, Class<?> targetType) throws ArgumentConversionException {
         if (source instanceof String) {
+            source = ((String) source).replaceAll(" ", "");
             // 分割为数组
             String str = source.toString().replace("[", "")
                     .replace("]", "");
