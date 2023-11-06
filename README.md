@@ -19,7 +19,7 @@
     1.两数之和
 ```
 ### 题目列表
-#### 梦开始的地方 《两数之和》
+#### 梦开始的地方 [《两数之和》](https://github.com/ThreadGitHub/LeetCode/blob/main/src/main/java/org/leetcode/no_1/No_1_TwoSum.java)
 ```
 1.两数之和 [简单]
 26. 删除有序数组中的重复项 [简单]  
