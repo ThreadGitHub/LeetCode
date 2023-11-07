@@ -1,4 +1,4 @@
-package org.leetcode.demo.bit_math;
+package org.leetcode.utils;
 
 import org.junit.jupiter.api.Test;
 
