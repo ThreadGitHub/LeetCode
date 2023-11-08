@@ -5,15 +5,19 @@ import org.junit.jupiter.params.provider.ValueSource;
 
 /**
  * 2609. 最长平衡子字符串
- * 1. 遇到0加一
- *     条件：1的次数=0 否则 设为0
- *     每一次重置1为0时, 取 0和1次数最大值
- * 2. 遇到1加一
- *      条件：小于 0 的次数
  * @author thread
  * @date 2023/11/8 00:05
  */
 public class No_2609_BalancedSubstring {
+    /**
+     * 计数解法
+     * 1. 遇到0加一
+     *       条件：1的次数=0 否则 设为0
+     *       每一次重置1为0时, 取 0和1次数最大值
+     * 2. 遇到1加一
+     *       条件：小于 0 的次数
+     * @param s
+     */
     @ParameterizedTest
     @ValueSource(strings = {
             "00101",
