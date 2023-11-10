@@ -58,7 +58,7 @@ public class No_2300_SuccessfulPairs {
     }
 
     /**
-     * 双数组排序解法
+     * 双数组排序解法，【要求结果要和spells索引对应，所以这个解不行】
      * @param spells
      * @param potions
      * @param success
@@ -71,6 +71,28 @@ public class No_2300_SuccessfulPairs {
     public void successfulPairs_B(@ConvertWith(ArrayConver.class) int[] spells,
                                   @ConvertWith(ArrayConver.class) int[] potions, long success) {
         int[] result = new int[spells.length];
+        // 对双数组排序
+        Arrays.sort(spells);
+        Arrays.sort(potions);
 
+        int lastIndex = potions.length-1;
+        for (int i = 0; i < spells.length; i++) {
+            int spellNum = spells[i];
+
+            // 找最小的符合条件的元素下标
+            for (int j = 0; j <= lastIndex; j++) {
+                if ((long) spellNum * potions[j] >= success) {
+                    lastIndex = j;
+                    break;
+                }
+            }
+
+            if ((long) spellNum * potions[lastIndex] >= success) {
+                // 计算符合条件的元素数量
+                result[i] = potions.length - lastIndex;
+            }
+        }
+
+        System.out.println(Arrays.toString(result));
     }
 }
