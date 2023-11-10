@@ -26,7 +26,7 @@ public class No_2300_SuccessfulPairs {
             "'[3,1,2]', '[8,5,8]', 16"
     })
     public void successfulPairs_A(@ConvertWith(ArrayConver.class) int[] spells,
-                                @ConvertWith(ArrayConver.class) int[] potions, long success) {
+                                  @ConvertWith(ArrayConver.class) int[] potions, long success) {
         int[] result = new int[spells.length];
 
         // 先对数组b排序
