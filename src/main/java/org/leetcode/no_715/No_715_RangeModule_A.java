@@ -7,6 +7,7 @@ import java.util.TreeMap;
 
 /**
  * 715. Range 模块 官方题解
+ * https://leetcode.cn/problems/range-module/solutions/1608992/range-mo-kuai-by-leetcode-solution-4utf/
  * @author thread
  * @date 2023/11/12 11:17
  */
