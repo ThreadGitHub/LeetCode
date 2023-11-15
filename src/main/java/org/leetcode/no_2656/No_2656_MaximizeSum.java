@@ -6,7 +6,6 @@ import org.junit.jupiter.params.provider.CsvSource;
 import org.leetcode.utils.ArrayConver;
 
 import java.util.Arrays;
-import java.util.Comparator;
 
 /**
  * 2656. K 个元素的最大和
@@ -21,9 +20,9 @@ public class No_2656_MaximizeSum {
     })
     public void maximizeSum(@ConvertWith(ArrayConver.class) int[] nums, int k) {
         int m = Arrays.stream(nums).max().getAsInt();
-        int result = m * k + (k - 1) * k / 2;
+        // m * k 算的时k个最大值的乘积
+        // (k - 1) * k / 2 算得是k值的累加值
+        int result = (m * k) + ((k - 1) * k / 2);
         System.out.println(result);
-
-        System.out.println((k - 1) * k / 2);
     }
 }
